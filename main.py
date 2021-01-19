@@ -1,4 +1,5 @@
 #https://www.golinuxcloud.com/python-subprocess/
+#https://www.pythontutorial.net/tkinter/
 import subprocess as sb
 import tkinter as tk
 import os
@@ -18,6 +19,7 @@ class App(Frame):
     def butonlar(self): # BUTONLARIN ÜZERİNE .PNG KONACAK !!!!!
         self.EntryFrame = Frame(self,bd=5)
         self.EntryFrame.grid(row=0, column=6)
+        tk.Button(self.EntryFrame,text="face",command=self.face).grid(row=1,column=0)
         tk.Button(self.EntryFrame,text="grid",command=self.py3w_grid).grid(row=1,column=1)
         tk.Button(self.EntryFrame,text="grill",command=self.grill).grid(row=1,column=2)
         tk.Button(self.EntryFrame,text="boltcircle",command=self.boltcircle).grid(row=1,column=3)
@@ -54,6 +56,10 @@ class App(Frame):
             
     def arcgen(self):    
         a = sb.run('python.exe py3w_arcgen-mill.py',capture_output=True)
+        self.gc.insert(tk.END,a.stdout)
+
+    def face(self):    
+        a = sb.run('python.exe py3w_face.py',capture_output=True)
         self.gc.insert(tk.END,a.stdout)
         
 ap = App()
