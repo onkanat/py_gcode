@@ -57,8 +57,7 @@ output to Gedit.
 from tkinter import *
 from math import *
 import os
-
-#IN_AXIS = os.environ.has_key("AXIS_PROGRESS_BAR")
+import sys
 
 class Application(Frame):
   def __init__(self, master=None):
@@ -155,10 +154,10 @@ class Application(Frame):
     self.ToClipboard.grid(row=14, column=1)
     
 
-    """if IN_AXIS:
-      self.quitButton = Button(self, text='Write to AXIS and Quit',\
+    self.WritetoAxisButton = Button(self, text='Write to AXIS and Quit',\
           command=self.WriteToAxis)
-    else:"""
+    self.WritetoAxisButton.grid(row=14,column=2)
+    
 
     self.quitButton = Button(self, text='Quit', command=self.quit)
     self.sendArcButton = Button(self, text='Send All', command=self.SendAll)

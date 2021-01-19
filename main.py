@@ -4,6 +4,7 @@ import tkinter as tk
 import os
 import sys
 from tkinter import filedialog,Frame
+from tkinter.scrolledtext import ScrolledText
 
 class App(Frame):
 
@@ -27,40 +28,34 @@ class App(Frame):
     def edit(self):# SAVE OPEN SELECT VS... İLAVE 
         self.TextFrame = Frame(self,bd=5)
         self.TextFrame.grid(row=1,column=6)
-        self.gc = tk.Text(self.TextFrame)
+        self.gc = ScrolledText(self.TextFrame)
         self.gc.grid(row=2,column=0)
 
 ### TÜM BUTONLARIN YERLERİ GÜNCELLENECEK ###         
     def py3w_grid(self):
         a = sb.run('python.exe py3w_grid.py',capture_output=True)
         self.gc.insert(tk.END,a.stdout)
-        print(a.stdout)
-
+        
     def grill(self):
         a = sb.run('python.exe py3w_grill.py',capture_output=True)
         self.gc.insert(tk.END,a.stdout)
-        print(a.stdout) 
-
+        
     def boltcircle(self):
         a = sb.run('python.exe py3w_boltcircle.py',capture_output=True)
         self.gc.insert(tk.END,a.stdout)
-        print(a.stdout)               
-
+        
     def counterbore(self):
         a = sb.run('python.exe py3w_counterbore.py',capture_output=True)
         self.gc.insert(tk.END,a.stdout)
-        print(a.stdout)  
-
+        
     def bezel(self):    
         a = sb.run('python.exe py3w_bezel.py',capture_output=True)
         self.gc.insert(tk.END,a.stdout)
-        print(a.stdout)  
-    
+            
     def arcgen(self):    
         a = sb.run('python.exe py3w_arcgen-mill.py',capture_output=True)
         self.gc.insert(tk.END,a.stdout)
-        print(a.stdout)
-
+        
 ap = App()
 ap.master.title("programlar")
 ap.mainloop()

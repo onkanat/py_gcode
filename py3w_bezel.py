@@ -35,8 +35,7 @@
 from tkinter import *
 from math import *
 import os
-
-"""IN_AXIS = os.environ.has_key("AXIS_PROGRESS_BAR")"""
+import sys
 
 class Application(Frame):
     def __init__(self, master=None):
@@ -162,9 +161,9 @@ class Application(Frame):
         self.ToClipboard = Button(self.EntryFrame, text='To Clipboard', command=self.CopyClipboard)
         self.ToClipboard.grid(row=16, column=1)
 
-        """if IN_AXIS:
-            self.quitButton = Button(self, text='Write to AXIS and Quit',command=self.WriteToAxis)
-        else:"""
+        
+        self.WriteToAxisButton = Button(self, text='Write to AXIS and Quit',command=self.WriteToAxis)
+        self.WriteToAxisButton.grid(row=13,column=1,sticky=S)
         self.quitButton = Button(self, text='Quit', command=self.quit)
         self.quitButton.grid(row=13, column=0, sticky=S)
 

@@ -40,8 +40,7 @@ from tkinter import *
 from math import *
 from tkinter import messagebox
 import os
-
-#IN_AXIS = os.environ.has_key("AXIS_PROGRESS_BAR")
+import sys
 
 class Application(Frame):
 	def __init__(self, master=None):
@@ -269,12 +268,9 @@ class Application(Frame):
 		self.GenerateBtn = Button(self, text="Generate", command=self.GeneratePath, width=7)
 		self.GenerateBtn.grid(row=22, column=3)
 
-		"""if IN_AXIS:
-			self.WriteButton = Button(self, text='To AXIS',\
-				command=self.WriteToAxis)
-		else:"""
-		self.WriteButton = Button(self, text='To Clipboard',
-			command=self.CopyClipboard, width=7)
+		
+		self.WriteButton = Button(self, text='To AXIS',command=self.WriteToAxis)
+		#self.WriteButton = Button(self, text='To Clipboard',command=self.CopyClipboard, width=7)
 		self.WriteButton.grid(row=22, column=4)
 
 		self.clearGCode = Button(self, text='Clear G Code Window', command=self.ClearGCode)
