@@ -41,8 +41,8 @@ class App(Frame):
         
         self.EditMenu = Menu(self.menu)
         self.menu.add_cascade(label='Edit', menu=self.EditMenu)
-        self.EditMenu.add_command(label='Copy', command=self.CopyClpBd)
-        #Paste gelecekkkkkkkk
+        self.EditMenu.add_command(label='Copy       ctrl+c', command=self.CopyClpBd)
+        self.EditMenu.add_command(label='Paste       ctrl+p',command=self.Paste)
         self.EditMenu.add_command(label='Select All', command=self.SelectAllText)
         self.EditMenu.add_command(label='Delete All', command=self.ClearTextBox)
         self.EditMenu.add_separator()
@@ -53,8 +53,6 @@ class App(Frame):
         self.menu.add_cascade(label='Help', menu=self.HelpMenu)
         self.HelpMenu.add_command(label='Help Info', command=self.HelpInfo)
         self.HelpMenu.add_command(label='About', command=self.HelpAbout)
-
-
 
     def butonlar(self): # BUTONLARIN ÜZERİNE .PNG KONACAK !!!!!
         self.EntryFrame = Frame(self,bd=5)
@@ -76,6 +74,9 @@ class App(Frame):
     def CopyClpBd(self):
         self.g_code.clipboard_clear()
         self.g_code.clipboard_append(self.g_code.get(0.0, tk.END))
+
+    def Paste(self):
+        self.g_code.insert(tk.END,self.g_code.clipboard_get())
 
     def WriteToFile(self):
         self.NewFileName = asksaveasfile(initialdir=self.GetIniData('face.ini','Directories','NcFiles',os.path.expanduser("~")),mode='w', \
