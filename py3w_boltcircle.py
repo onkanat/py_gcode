@@ -190,8 +190,8 @@ class Application(Frame):
         self.g_code.delete(1.0,END)
 
     def WriteToAxis(self): # if IN_AXIS: 
-        self.g_code.insert(END, 'M2\n')
-        sys.stdout.write(self.g_code.get(0.0, END)+'\n')
+        self.g_code.insert(END, 'M2')
+        sys.stdout.write(self.g_code.get(0.0, END))
         self.quit()
 
 app = Application()

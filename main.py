@@ -37,6 +37,8 @@ class App(Frame):
         self.FileMenu.add_command(label='New', command=self.ClearTextBox)
         self.FileMenu.add_command(label='Open', command=self.Simple)
         self.FileMenu.add_separator()
+        self.FileMenu.add_command(label='Save', command=self.WriteToFile)
+        self.FileMenu.add_separator()
         self.FileMenu.add_command(label='Quit', command=self.quit)
         
         self.EditMenu = Menu(self.menu)
@@ -58,7 +60,7 @@ class App(Frame):
         self.EntryFrame = Frame(self,bd=5)
         self.EntryFrame.grid(row=1, column=6)
         tk.Button(self.EntryFrame,text="face",command=self.face).grid(row=1,column=0)
-        tk.Button(self.EntryFrame,text="grid",command=self.py3w_grid).grid(row=1,column=1)
+        tk.Button(self.EntryFrame,text="grid",command=self.Grid).grid(row=1,column=1)
         tk.Button(self.EntryFrame,text="grill",command=self.grill).grid(row=1,column=2)
         tk.Button(self.EntryFrame,text="boltcircle",command=self.boltcircle).grid(row=1,column=3)
         tk.Button(self.EntryFrame,text="counterbore",command=self.counterbore).grid(row=1,column=4)
@@ -185,7 +187,7 @@ class App(Frame):
             'Amount to Remove,\n'
             'and Feedrate\n'
             'Fractions can be entered in most fields',
-            title='Yüzel silmek için gerekenler',
+            title='Yüzey silmek için gerekenler',
             buttons=['OK'],
             default='none').go()
 
@@ -198,8 +200,8 @@ class App(Frame):
             'Version ' + version)
 
 ### TÜM BUTONLARIN YERLERİ GÜNCELLENECEK ###
-    def py3w_grid(self):
-        a = sb.run('python.exe py3w_grid.py',capture_output=True)
+    def Grid(self):
+        a = sb.run('python3 py3w_grid.py',capture_output=True)
         self.g_code.insert(tk.END,a.stdout)
         
     def grill(self):
