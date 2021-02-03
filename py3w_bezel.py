@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!<UTF-8>
 """
     bezel-11.py G-Code Generator
     Version 1.1
@@ -36,6 +36,7 @@ from tkinter import *
 from math import *
 import os
 import sys
+from typing import Set
 
 class Application(Frame):
     def __init__(self, master=None):
@@ -266,11 +267,12 @@ class Application(Frame):
         self.clipboard_clear()
         for line in self.gcode:
             self.clipboard_append(line+'\n')
-
+    
     def WriteToAxis(self):
+        
         for line in self.gcode:
             sys.stdout.write(line+'\n')
-        self.quit()
+            self.quit()
 
 app = Application()
 app.master.title("bezel-11.py by Lawrence Glaister ")

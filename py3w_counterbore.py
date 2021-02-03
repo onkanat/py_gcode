@@ -20,6 +20,9 @@
 
 	e-mail me any suggestions to "bjt 128 at gmail dot com"
 	If you make money using this software
+
+
+	
 	you must donate $20 USD to a local food bank
 	or the food police will get you! Think of others from time to time...
 	
