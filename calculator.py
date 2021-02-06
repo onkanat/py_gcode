@@ -14,20 +14,25 @@ class Uygulama(object):
         self.depo = ""
 
     def guiPenAr(self):
+        
+        self.ekrano = Text(width=20,height=5)
         self.ekran = Entry(width=20)
-        self.ekran.grid(row=0, column=0, columnspan=3,ipady=4)
+        self.ekrano.grid(row=0, column=0, columnspan=3,ipady=4)
+        self.ekran.grid(row=1, column=0, columnspan=3,ipady=4)
 
         self.liste = [\
-                    "9", "8", "7",
-                    "6", "5", "4",
-                    "3", "2", "1",
-                    "0", "+", "-",
+                    "7", "8", "9",
+                    "4", "5", "6",
+                    "1", "2", "3",
+                    "+", "0", "-",
                     "/", "*", "=",
-                    "C"]
+                    "C"
+                    ]
 
-        self.sira = 1
+        self.sira = 2
         self.sutun = 0
 
+        
         for i in self.liste:
             self.komut = lambda x=i: self.hesapla(x)
             Button(text=i,
@@ -37,9 +42,31 @@ class Uygulama(object):
                                             column=self.sutun)
             self.sutun += 1
 
-            if self.sutun > 2:
+            if self.sutun > 2: # sütun sayısı -1
                 self.sutun = 0
                 self.sira += 1
+    
+    def key_handler(self, event):
+        print(event) # () ağırlık hesaplama ilave 
+        if event.char in '0123456789':
+            self.depo = self.depo+event.char
+
+        if event.char in '+-/*':
+            self.depo = self.depo+event.char
+
+        if event.char in '\r':
+            self.ekran.delete(0,END)
+            ans = self.hp(self.depo)
+            self.ekran.insert(END,ans)
+
+        if event.char in 'cC':
+            self.ekran.delete(0,END)
+            self.depo = ""
+
+    def hp(self, gelen):
+        self.gelen = gelen
+        self.hep = eval(self.gelen,{"__builtins__":None},{})
+        return self.hep
 
     def hesapla(self, tus):
         self.tus = tus
@@ -62,7 +89,10 @@ class Uygulama(object):
             self.depo = ""
 
 pencere = Tk()
-pencere.resizable(width=FALSE,height=FALSE)
 uyg = Uygulama()
+
+pencere.bind("<Key>", uyg.key_handler)
+pencere.resizable(width=FALSE,height=FALSE)
+
 
 mainloop()
