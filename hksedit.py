@@ -1,10 +1,8 @@
 #!<UTF-8>
 # Importing Required libraries & Modules
 import subprocess as sb
-import tkinter 
 from tkinter import *
-from tkinter import messagebox
-from tkinter import filedialog
+from tkinter import messagebox, filedialog
 
 # Defining TextEditor Class
 class TextEditor:
